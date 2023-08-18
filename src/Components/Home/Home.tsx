@@ -1,9 +1,14 @@
 import { Grid, TextField, Button, Card, CardContent, Typography } from '@mui/material';
-
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 const Home = (): JSX.Element => {
+    const navigate=useNavigate();
+
+    const [error,setError]=useState('')
 
     // get data by form
     const handelInfo = (event: React.SyntheticEvent) => {
+        setError('')
         event.preventDefault();
         const target = event.target as typeof event.target & {
             email: { value: string };
@@ -13,11 +18,32 @@ const Home = (): JSX.Element => {
         const email = target.email.value; // typechecks!
         const name = target.name.value; // typechecks!
         const phone = target.phone.value; // typechecks!
-        console.log(email, name, phone)
 
-       
+        interface UserObject {
+          
+            name: string;
+            email: string;
+            phone: number;
+            // other properties
+          }
 
-    }
+          const obj:UserObject={
+            name: name,
+            email: email,
+            phone: phone
+          }
+
+        //   localStorage set user object 
+          localStorage.setItem('UserObject', JSON.stringify(obj));
+
+
+        //   check if the object is exist or not 
+          if(localStorage.getItem('UserObject')){
+            navigate('/secondPage')
+          }else{
+            setError('Must enter your details before accessing the page');
+          }
+        }
 
     return (
         <div>
@@ -31,6 +57,9 @@ const Home = (): JSX.Element => {
                     <Card style={{ maxWidth: 450, padding: "20px 5px", margin: "0 auto" }}>
                         <CardContent>
 
+                            <Typography variant="body2" color="red" component="p" gutterBottom>
+                            {error}
+                            </Typography>
                             <Typography variant="body2" color="textSecondary" component="p" gutterBottom>
                                 Fill up the form for more data
                             </Typography>
