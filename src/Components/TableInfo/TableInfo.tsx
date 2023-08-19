@@ -10,6 +10,7 @@ const TableInfo = () => {
     ]
 
     const handlechangepage = (event: React.MouseEvent<HTMLButtonElement> | null, newpage: number) => {
+       event?.preventDefault()
         pagechange(newpage)
     }
     const handleRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
