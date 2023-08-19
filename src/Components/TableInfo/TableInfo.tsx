@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from "@mui/material";
-import SelectCheckbox from '../SelectCheckbox/SelectCheckbox';
 import SelectCheckbox2 from '../SelectCheckbox2/SelectCheckbox2';
 const TableInfo = () => {
 
@@ -81,8 +80,6 @@ const TableInfo = () => {
                 </Paper>
                 
             </div>
-
-            <SelectCheckbox></SelectCheckbox>
             <SelectCheckbox2></SelectCheckbox2>
         </div>
     );

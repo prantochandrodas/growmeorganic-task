@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  Checkbox,
+  Checkbox,Box,
   List,
   ListItem,
   ListItemText,
@@ -25,17 +25,18 @@ const departments: Department[] = [
     id: 1,
     name: 'customer_service',
     subdepartments: [
-      { id: 1, name: 'Subdepartment 1.1' },
-      { id: 2, name: 'Subdepartment 1.2' },
+      { id: 1, name: 'support' },
+      { id: 2, name: 'customer_success' },
       // Add more subdepartments as needed
     ],
   },
   {
     id: 2,
-    name: 'Department 2',
+    name: 'design',
     subdepartments: [
-      { id: 3, name: 'Subdepartment 2.1' },
-      { id: 4, name: 'Subdepartment 2.2' },
+      { id: 3, name: 'graphic_design' },
+      { id: 4, name: 'product_design' },
+      { id: 5, name: 'web_design' },
       // Add more subdepartments as needed
     ],
   },
@@ -92,7 +93,8 @@ const SelectCheckbox2: React.FC = () => {
   };
 
   return (
-    <List>
+    <Box sx={{ width: '90%', marginLeft: '5%' }}>
+        <List>
       {departments.map(department => (
         <React.Fragment key={department.id}>
           <ListItem button onClick={() => handleDepartmentCollapseToggle(department.id)}>
@@ -128,6 +130,7 @@ const SelectCheckbox2: React.FC = () => {
         </React.Fragment>
       ))}
     </List>
+    </Box>
   );
 };
 
